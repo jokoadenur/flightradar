@@ -39,7 +39,7 @@ jobs:
 
       # kita buat github action menjalankan skrip scrape.R
       - name: Run skrip R
-        run: Rscript -e 'source("scrape.R")'
+        run: Rscript -e 'source("flightradaR.R")'
       
       # berikutnya kita akan commit dan push ke repo
       - name: Commit results
