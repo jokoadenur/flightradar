@@ -1,5 +1,6 @@
 # hapus environment
 rm(list=ls())
+
 # activate some packages
 library(rvest)
 library(stringr)
