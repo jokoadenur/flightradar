@@ -14,15 +14,15 @@ jobs:
           -run: |
                sudo apt-get update
                sudo apt-get install libcurl4-openssl-dev
-          - name: Install packages
+         - name: Install packages
             uses: r-lib/actions/setup-r-dependencies@v2
             with:
                  packages: |
-                    any::dplyr
-                    any::readxl
-                    any::rvest
-                    any::stringr
-                    any::jsonlite
+                  any::dplyr
+                  any::readxl
+                  any::rvest
+                  any::stringr
+                  any::jsonlite
 
            - name: Use Node.js 20
              uses: actions/checkout@v2
