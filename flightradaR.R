@@ -1,3 +1,6 @@
+# hapus environment
+rm(list=ls())
+
 # activate some packages
 library(rvest)
 library(stringr)
@@ -49,4 +52,3 @@ flightradar <- na.omit(datagabung)
 
 # save the result as csv
 write.csv(flightradar, "myflight.csv")
-
