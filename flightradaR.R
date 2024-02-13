@@ -3,6 +3,7 @@ library(rvest)
 library(stringr)
 library(jsonlite)
 library(dplyr)
+library(readxl)
 
 gabung <- data.frame(bandara = c("mlg", "bwx", "sub", "jbb", "sup"))
 
