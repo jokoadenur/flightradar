@@ -48,12 +48,12 @@ jobs:
 
       # kita buat github action menjalankan skrip scrape.R
       - name: Run skrip R
-        run: Rscript -e 'source("flightradaR.R")'
+        run: Rscript -e 'source("scrape.R")'
       
       # berikutnya kita akan commit dan push ke repo
       - name: Commit results
         run: |
-          git config --global user.email "jokoadenursiyono@gmail.com"
+          git config --local user.email "jokoadenursiyono@gmail.com"
           git config --local user.name "Joko Ade"
           git add .
           git commit -m 'Data updated' || echo "No changes to commit"
