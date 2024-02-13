@@ -1,0 +1,41 @@
+name: myflightradaR
+
+on:
+   push:
+       branch: main
+
+jobs:
+    import-data:
+          runs-on: ubuntu-latest
+          steps:
+          -name: Set up R
+          -uses: r-lib/action/setup-r@v2
+          
+          -run: |
+               sudo apt-get update
+               sudo apt-get install libcurl4-openssl-dev
+          - name: Install packages
+            uses: r-lib/actions/setup-r-dependencies@v2
+            with:
+                 packages: |
+                    any::dplyr
+                    any::readxl
+                    any::rvest
+                    any::stringr
+                    any::jsonlite
+
+           - name: Use Node.js 20
+             uses: actions/checkout@v2
+             with:
+                  node-version: '20'
+
+           - name: Run code R
+             run: Rscript -e 'source("scrape.R")'
+
+           - name: Commit results
+             run: |
+                git config --local user.email "jokoadenursiyono@gmail.com"
+                git config --local user.name "Joko Ade"
+                git add .
+                git commit -m 'Data updated' || echo "No changes to commit"
+                git push || echo "No changes to commit"
