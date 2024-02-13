@@ -53,7 +53,7 @@ jobs:
       # berikutnya kita akan commit dan push ke repo
       - name: Commit results
         run: |
-          git config --local user.email "isi sesuai jokoadenursiyono@gmail.com"
+          git config --global user.email "jokoadenursiyono@gmail.com"
           git config --local user.name "Joko Ade"
           git add .
           git commit -m 'Data updated' || echo "No changes to commit"
