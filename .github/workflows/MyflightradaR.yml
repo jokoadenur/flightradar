@@ -1,9 +1,16 @@
-name: myflightradaR
+# Name of the workflow
+name: scrape-flightradar
 
 on:
   push:
     branches: main
 
+# code kalau mau penjadwalan
+# on:
+#  schedule:
+#    - cron: "*/5 * * * *" ini untuk menjalankan script otomatis setiap 5 menit
+
+# Jobs - What the computer should do? 
 jobs:
   import-data:
     # kita buat github action berjalan di ubuntu versi terbaru
@@ -16,6 +23,7 @@ jobs:
       # langkah kedua kita update dan install library di ubuntu
       - run: |
           sudo apt-get update
+          # khusus rvest di R, dibutuhkan libraries ubuntu sebagai berikut:
           sudo apt-get install libcurl4-openssl-dev
           
       # berikutnya adalah install libraries yang dibutuhkan di R
@@ -27,6 +35,7 @@ jobs:
             any::readxl
             any::rvest
             any::stringr
+            any::openxlsx
             any::jsonlite
       
       # set working directory
@@ -44,8 +53,8 @@ jobs:
       # berikutnya kita akan commit dan push ke repo
       - name: Commit results
         run: |
-          git config --local user.email "jokoadenursiyono@gmail.com"
+          git config --local user.email "isi sesuai jokoadenursiyono@gmail.com"
           git config --local user.name "Joko Ade"
-          git add myflight.csv
-          git commit -m 'Menambahkan file myflight.csv' || echo "No changes to commit"
+          git add .
+          git commit -m 'Data updated' || echo "No changes to commit"
           git push || echo "No changes to commit"
