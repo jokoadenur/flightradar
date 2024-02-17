@@ -50,12 +50,5 @@ for(i in seq(1,length(data))){
 # cleaning NA from data frame
 flightradar <- na.omit(datagabung)
 
-# Baca data yang sudah ada
-sebelum <- read.csv("myflight.csv")
-
-# Gabungkan data hasil scraping dengan data yang sudah ada sebelumnya
-update <- rbind(sebelum, flightradar)
-update <- update %>% distinct(asal, tanggal, .keep_all = TRUE)
-
 # Simpan data update ke file xlsx yang sama
-write.csv(update, "myflight.csv", row.names = FALSE)
+write.csv(flightradar, "myflight.csv", row.names = FALSE)
